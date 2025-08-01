@@ -42,10 +42,12 @@ export const Api = {
 
   // ARTICLES (Books)
 
-  getArticles: async () => {
-    const res = await fetch(`${API_BASE_URL}/articles`)
-    return parseResponse(res)
-  },
+  getArticles: async ({ page = 1, limit = 10 }: { page?: number; limit?: number }) => {
+  const res = await fetch(
+    `${API_BASE_URL}/articles?page=${page}&limit=${limit}`
+  );
+  return res.json();
+},
 
   createArticle: async (article: { title: string; sellerId: string }) => {
     const res = await fetch(`${API_BASE_URL}/articles`, {
