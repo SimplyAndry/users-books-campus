@@ -46,7 +46,7 @@ const articles = data?.pages.flat() || [];
             <BookCard
               key={article.id}
               title={article.name}
-              userFullName={user ? `${user.name}` : "Utente sconosciuto"}
+              userFullName={user ? `${user.name}` : `Utente sconosciuto (${article.sellerId})`}
             />
           );
         })}
