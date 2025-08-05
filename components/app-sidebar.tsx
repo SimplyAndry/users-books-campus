@@ -1,4 +1,4 @@
-
+import { Home, Book, CircleUser, Settings, BookPlus } from "lucide-react"
 
 import {
   Sidebar,
@@ -15,28 +15,28 @@ import {
 const items = [
   {
     title: "Home",
-    url: "#",
-    
+    url: "/",
+    icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
-    
+    title: "Users",
+    url: "/users",
+    icon: CircleUser,
   },
   {
-    title: "Calendar",
-    url: "#",
-    
+    title: "Books",
+    url: "/books",
+    icon: Book,
   },
   {
-    title: "Search",
+    title: "Add Book",
     url: "#",
-    
+    icon: BookPlus,
   },
   {
     title: "Settings",
     url: "#",
-    
+    icon: Settings,
   },
 ]
 
@@ -52,6 +52,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
+                      <item.icon/>
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>

@@ -49,6 +49,11 @@ export const Api = {
   return res.json();
 },
 
+  getBookById: async (id: string) => {
+    const res = await fetch(`${API_BASE_URL}/articles/${id}`)
+    return parseResponse(res)
+  },
+
   createArticle: async (article: { title: string; sellerId: string }) => {
     const res = await fetch(`${API_BASE_URL}/articles`, {
       method: 'POST',
