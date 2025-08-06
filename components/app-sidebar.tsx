@@ -30,7 +30,7 @@ const items = [
   },
   {
     title: "Add Book",
-    url: "#",
+    url: "/addingbook",
     icon: BookPlus,
   },
   {
