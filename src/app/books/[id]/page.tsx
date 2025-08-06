@@ -6,7 +6,9 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-
+interface BookPageProps {
+  params: Promise<{ id: string }>;
+}
 interface BookInfo{
     name: string;
     picture: string;
@@ -15,8 +17,8 @@ interface BookInfo{
     description: string;
     buyUrl: string;
 }
-export default async function BookPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function BookPage({ params }: BookPageProps ) {
+  const { id } = await params;
    
 
   if (!id) {
@@ -30,7 +32,7 @@ export default async function BookPage({ params }: { params: { id: string } }) {
   } catch (error) {
     notFound();
   }
-
+  
   return (
     <main className="flex min-h-screen p-4 bg-gradient-to-br from-white via-gray-200 to-[#d6bfa9]">
       <aside className="w-64 mr-4">
@@ -55,4 +57,3 @@ export default async function BookPage({ params }: { params: { id: string } }) {
     </main>
   );
 }
-//{book.buyUrl}
