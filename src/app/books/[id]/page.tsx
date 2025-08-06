@@ -20,7 +20,7 @@ interface BookInfo{
     buyUrl: string;
 }
 export default async function BookPage({ params }: BookPageProps) {
-  const {id} : BookPageProps["params"] = params;
+  const { id }: { id: string } = params;
    
 
   if (!id) {
