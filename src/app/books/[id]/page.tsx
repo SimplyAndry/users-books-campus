@@ -3,14 +3,10 @@ import { notFound } from "next/navigation";
 import { Api } from "@/src/lib/api";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-interface BookPageProps {
-    params: { 
-        id: string;
-    };
-}
+
 interface BookInfo{
     name: string;
     picture: string;
@@ -19,8 +15,8 @@ interface BookInfo{
     description: string;
     buyUrl: string;
 }
-export default async function BookPage({ params }: BookPageProps) {
-  const { id }: { id: string } = params;
+export default async function BookPage({ params }: { params: { id: string } }) {
+  const { id } = params;
    
 
   if (!id) {
