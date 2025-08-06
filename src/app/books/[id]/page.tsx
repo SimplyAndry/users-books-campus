@@ -1,4 +1,4 @@
-
+import React from "react";
 import { notFound } from "next/navigation";
 import { Api } from "@/src/lib/api";
 import { SidebarProvider } from "@/components/ui/sidebar";
@@ -8,19 +8,20 @@ import Link from "next/link"
 
 interface BookPageProps {
     params: { 
-        id: string 
+        id: string;
     };
 }
 interface BookInfo{
     name: string;
     picture: string;
-    sellerId: string;
+    sellerId: any;
     createdAt: string;
     description: string;
     buyUrl: string;
 }
 export default async function BookPage({ params }: BookPageProps) {
-  const {id} = await params;
+  const {id} : BookPageProps["params"] = params;
+   
 
   if (!id) {
     notFound();
