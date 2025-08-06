@@ -1,4 +1,4 @@
-'use client'
+
 import { notFound } from "next/navigation";
 import { Api } from "@/src/lib/api";
 import { SidebarProvider } from "@/components/ui/sidebar";
@@ -29,7 +29,7 @@ export default async function BookPage({ params }: BookPageProps) {
   let book: BookInfo;
 
   try {
-    book = await Api.getBookById(id);
+    book= await Api.getBookById(id);
   } catch (error) {
     notFound();
   }
