@@ -15,6 +15,11 @@ export const Api = {
     return parseResponse(res)
   },
 
+  getUserById: async (id: string) => {
+    const res = await fetch(`${API_BASE_URL}/users/${id}`)
+    return parseResponse(res)
+  },
+
   createUser: async (user: { name: string }) => {
     const res = await fetch(`${API_BASE_URL}/users`, {
       method: 'POST',
@@ -54,7 +59,7 @@ export const Api = {
     return parseResponse(res)
   },
 
-  createArticle: async (article: { title: string; sellerId: string }) => {
+  createArticle: async (article: { createdAt: string; name: string; description: string;  picture: string; buyUrl: string; sellerId: string; id: string;}) => {
     const res = await fetch(`${API_BASE_URL}/articles`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

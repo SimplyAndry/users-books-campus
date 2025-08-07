@@ -35,11 +35,13 @@ export default function UsersPage() {
         <h1 className="text-2xl sticky font-bold mb-4">Lista Utenti</h1>
         <div className="grid gap-4">
           {users?.map((user: any) => (
-            <UserCard
-              key={user.id}
-              name={user.name}
-              avatar={user.avatar}
-            />
+            <Link key={user.id} href={`/users/${user.id}`}>
+              <UserCard
+                key={user.id}
+                name={user.name}
+                avatar={user.avatar}
+              />
+            </Link>
           ))}
         </div>
       </div>
