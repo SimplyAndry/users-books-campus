@@ -1,6 +1,5 @@
 'use client';
 
-import { Api } from "@/src/lib/api";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Button } from "@/components/ui/button";
