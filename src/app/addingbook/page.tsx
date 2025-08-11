@@ -4,9 +4,30 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Button } from "@/components/ui/button";
 import { createBookAction } from "./action";
-// Api.createArticle()
+import { useAuthStore } from "@/src/store/useUserStore";
+import { useRouter } from 'next/navigation';
+import { useEffect } from "react";
+
 
 export default function AddingBookPage() {
+    const user = useAuthStore((state) => state.user);
+    const router = useRouter();
+     useEffect(() => {
+    if (!user) {
+      router.push("/auth");
+    }
+  }, [user, router]);
+
+  if (!user) {
+    return (
+        <div className="flex items-center justify-center h-screen">
+            <p className="text-lg">U need to login first!</p>
+            <Button>
+                <a href="/auth">Login</a>
+            </Button>
+        </div>
+  );
+}
     return(
         <main className="flex min-h-screen p-4 bg-gradient-to-br from-white via-gray-200 to-[#d6bfa9]">
             <aside className="w-64 mr-4">
@@ -56,11 +77,12 @@ export default function AddingBookPage() {
                             />
                         </div>
                         <div>
-                            <label className="block mb-1 font-medium">Seller ID</label>
+                            <label className="hidden">Seller ID</label>
                             <input
                                 name="sellerId"
                                 type="string"
-                                className="w-full border rounded px-3 py-2"
+                                value={user.id}
+                                className="hidden"
                                 required
                             />
                         </div>

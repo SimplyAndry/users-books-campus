@@ -20,7 +20,15 @@ export const Api = {
     return parseResponse(res)
   },
 
-  createUser: async (user: { name: string }) => {
+  createUser: async (user: { 
+    name: string;
+    avatar: string;
+    birthdate: string;
+    articlesIds?: string;
+    createdAt: string;
+    id: string;
+    password: string; // aggiunto campo password
+    }) => {
     const res = await fetch(`${API_BASE_URL}/users`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

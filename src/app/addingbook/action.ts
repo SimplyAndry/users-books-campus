@@ -5,7 +5,6 @@ import { Api } from '@/src/lib/api';
 
 export async function createBookAction(formData: FormData): Promise<void> {
   
-
   const name = formData.get('name') as string;
   const picture = formData.get('picture') as string;
   const description = formData.get('description') as string;

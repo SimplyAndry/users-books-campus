@@ -1,15 +1,18 @@
-import { Home, Book, CircleUser, Settings, BookPlus } from "lucide-react"
-
+import { Home, Book, CircleUser, Settings, BookPlus, UserRoundPlus, Key } from "lucide-react";
+import { useAuthStore } from "@/src/store/useUserStore";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+
+  
 
 // Menu items.
 const items = [
@@ -34,6 +37,16 @@ const items = [
     icon: BookPlus,
   },
   {
+    title: "Sign up",
+    url: "/auth/signup",
+    icon: UserRoundPlus,
+  },
+  {
+    title: "Login",
+    url: "/auth/login",
+    icon: Key,
+  },
+  {
     title: "Settings",
     url: "#",
     icon: Settings,
@@ -41,6 +54,8 @@ const items = [
 ]
 
 export function AppSidebar() {
+  const { user, login } = useAuthStore();
+  const userName = user ? user.name : "Guest";
   return (
     <Sidebar>
       <SidebarContent>
@@ -62,6 +77,18 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+            <SidebarMenuItem key={userName}>
+              <SidebarMenuButton asChild>
+                <a href="/">
+                  <CircleUser />
+                  <span>{userName}</span>
+                </a>
+              </SidebarMenuButton>  
+            </SidebarMenuItem>
+          </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   )
 }
