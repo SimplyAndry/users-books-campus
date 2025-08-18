@@ -33,7 +33,7 @@ export default async function UserPage({ params }: UserPageProps) {
     }
 
     return (
-        <main className="flex min-h-screen p-4 bg-gradient-to-br from-white via-gray-200 to-[#d6bfa9]">
+        <main className="flex min-h-screen p-4 bg-gradient-to-br from-[#FFFFFF] to-[#FFEFBA]">
             <aside className="w-64 mr-4">
                 <SidebarProvider>
                     <AppSidebar />

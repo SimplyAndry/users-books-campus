@@ -46,7 +46,7 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-600 via-purple-700 to-pink-600">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-white-600 via-[#C19A6B] to-[#d6bfa9]">
       <div className="bg-white p-10 rounded-xl shadow-xl max-w-md w-full">
         <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">🔐 Login</h2>
 
@@ -57,7 +57,7 @@ export default function Login() {
             value={loginName}
             onChange={(e) => setLoginName(e.target.value)}
             required
-            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C2B280]"
           />
 
           <input
@@ -66,12 +66,12 @@ export default function Login() {
             value={loginPassword}
             onChange={(e) => setLoginPassword(e.target.value)}
             required
-            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C2B280]"
           />
 
           <button
             type="submit"
-            className="w-full bg-purple-600 text-white py-3 rounded-md hover:bg-purple-700 transition"
+            className="w-full bg-[#967969] text-white py-3 rounded-md hover:bg-stone-500 transition"
           >
             Accedi
           </button>
@@ -83,7 +83,7 @@ export default function Login() {
 
         <p className="mt-6 text-center text-gray-600">
           Non hai un account?{" "}
-          <a href="/register" className="text-purple-600 font-semibold hover:underline">
+          <a href="/auth/signup" className="text-[#A52A2A] font-semibold hover:underline">
             Registrati
           </a>
         </p>

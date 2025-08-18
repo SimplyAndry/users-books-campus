@@ -54,7 +54,7 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-pink-600 via-red-600 to-yellow-500">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-white-600 via-[#C19A6B] to-[#d6bfa9]">
       <div className="bg-white p-10 rounded-xl shadow-xl max-w-md w-full">
         <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">📝 Registrazione</h2>
 
@@ -65,7 +65,7 @@ export default function Register() {
             value={regName}
             onChange={(e) => setRegName(e.target.value)}
             required
-            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C2B280]"
           />
           <input
             type="url"
@@ -73,7 +73,7 @@ export default function Register() {
             value={regAvatar}
             onChange={(e) => setRegAvatar(e.target.value)}
             required
-            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C2B280]"
           />
           <input
             type="password"
@@ -81,26 +81,27 @@ export default function Register() {
             value={regPassword}
             onChange={(e) => setRegPassword(e.target.value)}
             required
-            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C2B280]"
           />
           <input
             type="date"
             value={regBirthdate}
             onChange={(e) => setRegBirthdate(e.target.value)}
             required
-            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C2B280]"
           />
           <input
             type="text"
             placeholder="Articles ID"
-            value={regArticlesId}
+            value="0"
             onChange={(e) => setRegArticlesId(e.target.value)}
             required
-            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="hidden w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#C2B280]"
           />
           <button
             type="submit"
-            className="w-full bg-red-600 text-white py-3 rounded-md hover:bg-red-700 transition"
+            onClick={() => {window.location.href = "/auth/login";}}
+            className="w-full bg-[#967969] text-white py-3 rounded-md hover:bg-stone-500 transition"
           >
             Crea Utente
           </button>
@@ -112,7 +113,7 @@ export default function Register() {
 
         <p className="mt-6 text-center text-gray-600">
           Hai già un account?{" "}
-          <a href="/login" className="text-red-600 font-semibold hover:underline">
+          <a href="/auth/login" className="text-[#A52A2A] font-semibold hover:underline">
             Accedi
           </a>
         </p>

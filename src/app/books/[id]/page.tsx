@@ -12,7 +12,7 @@ interface BookPageProps {
 }
 interface BookInfo{
     name: string;
-    picture: string;
+    picture: any;
     sellerId: any;
     createdAt: string;
     description: string;
@@ -35,7 +35,7 @@ export default async function BookPage({ params }: BookPageProps ) {
   }
   
   return (
-    <main className="flex min-h-screen p-4 bg-gradient-to-br from-white via-gray-200 to-[#d6bfa9]">
+    <main className="flex min-h-screen p-4 bg-gradient-to-br from-[#FFFFFF] to-[#FFEFBA]">
       <aside className="w-64 mr-4">
         <SidebarProvider>
           <AppSidebar />
@@ -53,7 +53,7 @@ export default async function BookPage({ params }: BookPageProps ) {
                 <span className="text-xl">Buy</span>
             </Button>
         </Link>
-        <form action={deleteBookAction} method="POST" className="mt-4" >
+        <form action={deleteBookAction} className="mt-4" >
           <Button type="submit" variant="destructive" size="lg" className="w-sm h-12 bg-red-600">
             <span className="text-xl">Delete Book</span>
           </Button>

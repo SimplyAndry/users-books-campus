@@ -1,3 +1,5 @@
+
+'use client';
 import { Home, Book, CircleUser, Settings, BookPlus, UserRoundPlus, Key } from "lucide-react";
 import { useAuthStore } from "@/src/store/useUserStore";
 import {
@@ -54,8 +56,13 @@ const items = [
 ]
 
 export function AppSidebar() {
-  const { user, login } = useAuthStore();
+  const { user } = useAuthStore();
   const userName = user ? user.name : "Guest";
+  
+  let url = "/auth/login/logout"; 
+  if (userName === "Guest"){
+    url = "/auth/login"; 
+  }
   return (
     <Sidebar>
       <SidebarContent>
@@ -81,8 +88,8 @@ export function AppSidebar() {
         <SidebarMenu>
             <SidebarMenuItem key={userName}>
               <SidebarMenuButton asChild>
-                <a href="/">
-                  <CircleUser />
+                <a href={url}>
+                  {user ? <img src={user.avatar} alt={userName} className="w-6 h-6 rounded-full mr-2" /> : <CircleUser className="w-6 h-6 mr-2" />}
                   <span>{userName}</span>
                 </a>
               </SidebarMenuButton>  
