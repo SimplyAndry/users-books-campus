@@ -22,12 +22,12 @@ export const Api = {
 
   createUser: async (user: { 
     name: string;
-    avatar: string;
+    avatar?: string;
     birthdate: string;
     articlesIds?: string;
     createdAt: string;
     id: string;
-    password: string; // aggiunto campo password
+    password: string;
     }) => {
     const res = await fetch(`${API_BASE_URL}/users`, {
       method: 'POST',

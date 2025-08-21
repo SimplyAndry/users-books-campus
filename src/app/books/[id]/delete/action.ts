@@ -10,8 +10,6 @@ export async function deleteBookAction(formData: FormData ): Promise<void>{
     const sellerId = formData.get('sellerId') as string;
     const user = useAuthStore((state) => state.user);
 
-    if ()
-
     if (!id) {
         console.error('Book ID is required for deletion.');
         return;

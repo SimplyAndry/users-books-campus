@@ -21,32 +21,32 @@ export default function UsersPage() {
   if (error) return <div className="p-4 text-red-500">Errore nel caricamento utenti.</div>;
 
   return (
-    
-  <main className="flex min-h-screen p-4 bg-gradient-to-br from-[#FFFFFF] to-[#FFEFBA]">
-   
-    <aside className="w-64 mr-4">
-      <SidebarProvider>
-        <AppSidebar />
-      </SidebarProvider>
-    </aside>
-    
-    <div className="flex-1 relative">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-2xl sticky font-bold mb-4">Lista Utenti</h1>
-        <div className="grid gap-4">
-          {users?.map((user: any) => (
-            <Link key={user.id} href={`/users/${user.id}`}>
-              <UserCard
-                key={user.id}
-                name={user.name}
-                avatar={user.avatar}
-              />
-            </Link>
-          ))}
+
+    <main className="flex min-h-screen p-4 bg-gradient-to-br from-[#FFFFFF] to-[#FFEFBA]">
+
+      <aside className="w-64 mr-4">
+        <SidebarProvider>
+          <AppSidebar />
+        </SidebarProvider>
+      </aside>
+
+      <div className="flex-1 relative">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-2xl sticky font-bold mb-4">Lista Utenti</h1>
+          <div className="grid gap-4">
+            {users?.map((user: any) => (
+              <Link key={user.id} href={`/users/${user.id}`}>
+                <UserCard
+                  key={user.id}
+                  name={user.name}
+                  avatar={user.avatar || "/user.svg"}
+                />
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
 
   );
 }

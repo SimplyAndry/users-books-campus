@@ -2,9 +2,19 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-
+import { useAuthStore } from "@/src/store/useUserStore";
+import { useEffect } from "react";
+import { toast } from "sonner";
 
 export default function Home() {
+  const { user } = useAuthStore();
+
+  useEffect(() => {
+    if (user) {
+      toast.success("Welcome @" + user.name,)
+    }
+  }, [user]);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24 space-y-8 bg-gradient-to-br from-[#FFEFBA] to-[#FFFFFF]">
       <h1 className="flex text-7xl text-stone-950">Welcome!</h1>

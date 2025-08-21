@@ -43,7 +43,7 @@ export default async function UserPage({ params }: UserPageProps) {
             <div className="flex-1 relative">
                 <div className="max-w-4xl mx-auto">
                     <h1 className="text-2xl font-bold mb-4">{user.name}</h1>
-                    <img src={user.avatar} alt={user.name} className="w-32 h-32 rounded-full mb-4" />
+                    <img src={user.avatar || "/user.svg"} alt={user.name} className="w-32 h-32 rounded-full mb-4" />
                     <p className="text-sm text-gray-600 mb-2">Created at: {new Date(user.createdAt).toLocaleDateString()}</p>
                     <p className="text-sm text-gray-600 mb-2">Birthdate: {user.birthdate}</p>
                     {/* <Link href={`/users/${id}/edit`}>

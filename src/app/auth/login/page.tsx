@@ -47,6 +47,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-white-600 via-[#C19A6B] to-[#d6bfa9]">
+      <a href="/" className="absolute top-4 left-4 text-gray-500 hover:underline" >Home</a>
       <div className="bg-white p-10 rounded-xl shadow-xl max-w-md w-full">
         <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">🔐 Login</h2>
 
