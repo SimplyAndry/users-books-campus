@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useRef, useCallback } from "react";
+
 import Link from "next/link"
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { BookCard } from '@/components/bookcard'
@@ -14,25 +14,25 @@ export default function BooksPage() {
     data: users,
     isLoading: loadingUsers,
   } = useQuery({
-    queryKey: ["users"], 
+    queryKey: ["users"],
     queryFn: () => Api.getUsers()
   });
 
-const {
-  data,
-  fetchNextPage,
-  hasNextPage,
-  isFetchingNextPage,
-} = useInfiniteQuery({
-  queryKey: ["articles"],
-  queryFn: ({ pageParam = 1 }) => Api.getArticles({ page: pageParam, limit: LIMIT }),
-  getNextPageParam: (lastPage, allPages) => {
-    return lastPage.length === LIMIT ? allPages.length + 1 : undefined;
-  },
-  initialPageParam: 1,
-});
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["articles"],
+    queryFn: ({ pageParam = 1 }) => Api.getArticles({ page: pageParam, limit: LIMIT }),
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.length === LIMIT ? allPages.length + 1 : undefined;
+    },
+    initialPageParam: 1,
+  });
 
-const articles = data?.pages.flat() || [];
+  const articles = data?.pages.flat() || [];
 
   if (loadingUsers) return <div>Loading...</div>;
 
@@ -62,18 +62,18 @@ const articles = data?.pages.flat() || [];
             })}
           </div>
 
-        {hasNextPage && (
-          <div className="mt-6 flex justify-center">
-            <Button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
-              {isFetchingNextPage ? "Loading..." : "Search more"}
-            </Button>
-          </div>
-        )}
+          {hasNextPage && (
+            <div className="mt-6 flex justify-center">
+              <Button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
+                {isFetchingNextPage ? "Loading..." : "Search more"}
+              </Button>
+            </div>
+          )}
 
         </div>
       </div>
     </main>
   );
-  
+
 
 }
