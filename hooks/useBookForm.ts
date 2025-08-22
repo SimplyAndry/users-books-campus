@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useAuthStore } from "@/src/store/useUserStore";
 import { useEffect } from "react";
-import { hendleNotLogged } from "@/src/app/addingbook/page";
 import { Api } from "@/src/lib/api";
+import { toast } from "sonner";
 
 export interface BookFormData {
   name: string;
@@ -35,16 +35,10 @@ export function useBookForm() {
   }, [user?.id, reset]);
 
   const onSubmit = async (data: BookFormData) => {
-    if (!data.sellerId){
-      return(
-        hendleNotLogged()
-      );
-    }
-    
     try {
       const id = crypto.randomUUID();
       const createdAt = new Date().toISOString();
-
+  
       await Api.createArticle({
         id,
         createdAt,
@@ -54,9 +48,9 @@ export function useBookForm() {
         buyUrl: data.buyUrl,
         sellerId: data.sellerId,
       });
-
+  
       reset();
-      // se vuoi redirect client-side
+      toast.success("Book created successfully");
       window.location.href = "/books";
     } catch (error) {
       console.error("Error creating book:", error);
