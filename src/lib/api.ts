@@ -19,8 +19,11 @@ export const Api = {
     const res = await fetch(`${API_BASE_URL}/users/${id}`)
     return parseResponse(res)
   },
-
-  createUser: async (user: { 
+  searchUsers: async (query: string) => {
+    const res = await fetch(`${API_BASE_URL}/users?search=${encodeURIComponent(query)}`)
+    return parseResponse(res)
+  },
+  createUser: async (user: {
     name: string;
     avatar?: string;
     birthdate: string;
@@ -28,7 +31,7 @@ export const Api = {
     createdAt: string;
     id: string;
     password: string;
-    }) => {
+  }) => {
     const res = await fetch(`${API_BASE_URL}/users`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -56,18 +59,21 @@ export const Api = {
   // ARTICLES (Books)
 
   getArticles: async ({ page = 1, limit = 10 }: { page?: number; limit?: number }) => {
-  const res = await fetch(
-    `${API_BASE_URL}/articles?page=${page}&limit=${limit}`
-  );
-  return res.json();
-},
+    const res = await fetch(
+      `${API_BASE_URL}/articles?page=${page}&limit=${limit}`
+    );
+    return res.json();
+  },
 
   getBookById: async (id: string) => {
     const res = await fetch(`${API_BASE_URL}/articles/${id}`)
     return parseResponse(res)
   },
-
-  createArticle: async (article: { createdAt: string; name: string; description: string;  picture: string; buyUrl: string; sellerId: string; id: string;}) => {
+  searchArticles: async (query: string) => {
+    const res = await fetch(`${API_BASE_URL}/articles?search=${encodeURIComponent(query)}`)
+    return parseResponse(res)
+  },
+  createArticle: async (article: { createdAt: string; name: string; description: string; picture: string; buyUrl: string; sellerId: string; id: string; }) => {
     const res = await fetch(`${API_BASE_URL}/articles`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

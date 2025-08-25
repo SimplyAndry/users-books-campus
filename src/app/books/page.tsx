@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Api } from '@/src/lib/api'
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { SearchBook } from "@/components/searchcomponents";
 
 const LIMIT = 10;
 export default function BooksPage() {
@@ -45,6 +46,7 @@ export default function BooksPage() {
       </aside>
       <div className="flex-1 relative">
         <div className="max-w-4xl mx-auto">
+          <SearchBook />
           <h1 className="text-2xl font-bold mb-4">Books:</h1>
           <div className="grid gap-4">
             {articles.map((article) => {
