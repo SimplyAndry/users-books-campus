@@ -14,7 +14,7 @@ export default function Login() {
 
   useEffect(() => {
     if (user) {
-      router.replace("/"); // redirect automatico se già loggato
+      router.replace("/"); 
     }
   }, [user, router]);
 
@@ -31,7 +31,7 @@ export default function Login() {
       if (found) {
         login(found);
         setLoginMessage(`✅ Benvenuto ${found.name}`);
-        router.replace("/"); // redirect dopo login
+        router.replace("/"); 
       } else {
         setLoginMessage("❌ Nome o password errati");
       }
@@ -41,7 +41,6 @@ export default function Login() {
   };
 
   if (user) {
-    // mentre il redirect è in corso, evita il flash del form
     return null;
   }
 

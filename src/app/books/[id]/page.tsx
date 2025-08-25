@@ -6,8 +6,8 @@ import { Api } from "@/src/lib/api";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Button } from "@/components/ui/button";
-import { deleteBookAction } from "./delete/action";
 import Link from "next/link";
+import { DeleteButton } from "@/components/deletebutton";
 
 interface BookPageProps {
   params: Promise<{ id: string }>;
@@ -54,14 +54,10 @@ export default async function BookPage({ params }: BookPageProps ) {
                 <span className="text-xl">Buy</span>
             </Button>
         </Link>
-        <form action={deleteBookAction} className="mt-4" >
-          <Button type="submit" variant="destructive" size="lg" className="w-sm h-12 bg-red-600">
-            <span className="text-xl">Delete Book</span>
-          </Button>
-          <input type="text" name="id" id="id" defaultValue={id} className="hidden" />
-        </form>
+        <DeleteButton id={id} sellerId={book.sellerId} />
         </div>
       </div>
     </main>
   );
+
 }
