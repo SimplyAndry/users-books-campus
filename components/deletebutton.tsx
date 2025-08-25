@@ -23,7 +23,7 @@ export function DeleteButton({ id, sellerId }: { id: string, sellerId: string })
 
   if (user?.id === sellerId) {
     return (
-      <Button onClick={() => deleteBook()} variant="destructive" size="lg" className="w-sm h-12 bg-red-600">
+      <Button onClick={() => deleteBook()} variant="destructive" size="lg" className="w-sm h-12 bg-red-600 mt-4">
         <Trash2 className="w-4 h-4 mr-2" />
         <span className="text-xl">Delete Book</span>
       </Button>
