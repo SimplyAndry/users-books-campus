@@ -6,6 +6,7 @@ import { Api } from "@/src/lib/api";
 import { UserCard } from "@/components/usercard";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { SearchUser } from "@/components/searchcomponents";
 
 export default function UsersPage() {
   const {
@@ -23,7 +24,6 @@ export default function UsersPage() {
   return (
 
     <main className="flex min-h-screen p-4 bg-gradient-to-br from-[#FFFFFF] to-[#FFEFBA]">
-
       <aside className="w-64 mr-4">
         <SidebarProvider>
           <AppSidebar />
@@ -32,7 +32,8 @@ export default function UsersPage() {
 
       <div className="flex-1 relative">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-2xl sticky font-bold mb-4">Lista Utenti</h1>
+          <SearchUser />
+          <h1 className="text-2xl font-bold mb-4">Lista Utenti</h1>
           <div className="grid gap-4">
             {users?.map((user: any) => (
               <Link key={user.id} href={`/users/${user.id}`}>

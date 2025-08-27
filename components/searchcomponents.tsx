@@ -17,7 +17,7 @@ export function SearchBook() {
   });
 
   return (
-    <div className="flex flex-col gap-2 w-full max-w-md">
+    <div className="relative flex flex-col gap-2 w-full max-w-md">
       <div className="flex items-center gap-2">
         <Search className="w-4 h-4" />
         <Input
@@ -30,10 +30,10 @@ export function SearchBook() {
 
       {isLoading && <p>Loading...</p>}
       {error && <p className="text-red-500">None found</p>}
-      <ul className="mt-2 space-y-1">
+      <ul className="mt-2 absolute top-5 left-4 w-full rounded-md p-2">
         {data?.map((article: any) => (
-          <li key={article.id} className="p-2 bg-gray-100 rounded">
-            {article.name}
+          <li key={article.id} className="p-2 bg-gray-50 rounded border hover:bg-gray-200 cursor-pointer">
+            <a href={`/books/${article.id}`}>{article.name}</a>
           </li>
         ))}
       </ul>
@@ -52,7 +52,7 @@ export function SearchUser() {
   });
 
   return (
-    <div className="flex flex-col gap-2 w-full max-w-md">
+    <div className="relative flex flex-col gap-2 w-full max-w-md">
       <div className="flex items-center gap-2">
         <Search className="w-4 h-4" />
         <Input
@@ -65,10 +65,10 @@ export function SearchUser() {
 
       {isLoading && <p>Loading...</p>}
       {error && <p className="text-red-500">None found</p>}
-      <ul className="mt-2 space-y-1">
+      <ul className="mt-2 absolute top-5 left-4 w-full rounded-md p-2">
         {data?.map((user: any) => (
-          <li key={user.id} className="p-2 bg-gray-100 rounded">
-            {user.name}
+          <li key={user.id} className="p-2 bg-gray-50 rounded border hover:bg-gray-200 cursor-pointer">
+            <a href={`/users/${user.id}`}>{user.name}</a>
           </li>
         ))}
       </ul>
