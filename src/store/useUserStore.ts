@@ -15,6 +15,7 @@ interface AuthState {
   user: User | null;
   login: (user: User) => void;
   logout: () => void;
+  updateUser: (user: User) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -23,6 +24,7 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       login: (user) => set({ user }),
       logout: () => set({ user: null }),
+      updateUser: (user) => set({ user }),
     }),
     {
       name: "auth-storage", // nome chiave localStorage

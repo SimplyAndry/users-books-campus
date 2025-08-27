@@ -10,50 +10,50 @@ interface UserPageProps {
   params: Promise<{ id: string }>;
 }
 
-interface UserInfo{
-    name: string;
-    createdAt: string;
-    avatar: string;
-    birthdate: string;
+interface UserInfo {
+  name: string;
+  createdAt: string;
+  avatar: string;
+  birthdate: string;
 }
 
 export default async function UserPage({ params }: UserPageProps) {
-    const { id } = await params;
+  const { id } = await params;
 
-    if (!id) {
-        notFound();
-    }
+  if (!id) {
+    notFound();
+  }
 
-    let user: UserInfo;
+  let user: UserInfo;
 
-    try {
-        user = await Api.getUserById(id);
-    } catch (error) {
-        notFound();
-    }
+  try {
+    user = await Api.getUserById(id);
+  } catch (error) {
+    notFound();
+  }
 
-    return (
-        <main className="flex min-h-screen p-4 bg-gradient-to-br from-[#FFFFFF] to-[#FFEFBA]">
-            <aside className="w-64 mr-4">
-                <SidebarProvider>
-                    <AppSidebar />
-                </SidebarProvider>
-            </aside>
+  return (
+    <main className="flex min-h-screen p-4 bg-gradient-to-br from-[#FFFFFF] to-[#FFEFBA]">
+      <aside className="w-64 mr-4">
+        <SidebarProvider>
+          <AppSidebar />
+        </SidebarProvider>
+      </aside>
 
-            <div className="flex-1 relative">
-                <div className="max-w-4xl mx-auto">
-                    <h1 className="text-2xl font-bold mb-4">{user.name}</h1>
-                    <img src={user.avatar || "/user.svg"} alt={user.name} className="w-32 h-32 rounded-full mb-4" />
-                    <p className="text-sm text-gray-600 mb-2">Created at: {new Date(user.createdAt).toLocaleDateString()}</p>
-                    <p className="text-sm text-gray-600 mb-2">Birthdate: {user.birthdate}</p>
-                    {/* <Link href={`/users/${id}/edit`}>
-                        <Button variant="default" size="lg" className="w-sm h-12 bg-stone-800">
-                            <span className="text-xl">Edit User</span>
-                        </Button>
-                    </Link> */}
-                </div>
-            </div>
-        </main>
-    )
+      <div className="flex-1 relative">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-2xl font-bold mb-4">{user.name}</h1>
+          <img src={user.avatar || "/user.svg"} alt={user.name} className="w-32 h-32 rounded-full mb-4" />
+          <p className="text-sm text-gray-600 mb-2">Created at: {new Date(user.createdAt).toLocaleDateString()}</p>
+          <p className="text-sm text-gray-600 mb-2">Birthdate: {user.birthdate}</p>
+          <Link href={`/settings`}>
+            <Button variant="default" size="lg" className="w-sm h-12 bg-stone-800">
+              <span className="text-xl">Edit User</span>
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </main>
+  )
 
 }

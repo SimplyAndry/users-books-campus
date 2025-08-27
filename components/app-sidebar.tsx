@@ -50,7 +50,7 @@ const items = [
   },
   {
     title: "Settings",
-    url: "#",
+    url: "/settings",
     icon: Settings,
   },
 ]
@@ -59,7 +59,7 @@ export function AppSidebar() {
   const { user } = useAuthStore();
   const userName = user ? user.name : "Guest";
   
-  let url = "/auth/login/logout"; 
+  let url = "/users/" + user?.id; 
   if (userName === "Guest"){
     url = "/auth/login"; 
   }

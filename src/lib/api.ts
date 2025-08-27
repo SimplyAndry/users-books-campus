@@ -40,7 +40,12 @@ export const Api = {
     return parseResponse(res)
   },
 
-  updateUser: async (id: string, user: { name: string }) => {
+  updateUser: async (id: string, user: {
+    name: string,
+    avatar: string,
+    birthdate: string,
+    password: string
+  }) => {
     const res = await fetch(`${API_BASE_URL}/users/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
