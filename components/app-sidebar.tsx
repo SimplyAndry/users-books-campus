@@ -13,6 +13,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { useState } from "react";
 
   
 
@@ -39,16 +40,6 @@ const items = [
     icon: BookPlus,
   },
   {
-    title: "Sign up",
-    url: "/auth/signup",
-    icon: UserRoundPlus,
-  },
-  {
-    title: "Login",
-    url: "/auth/login",
-    icon: Key,
-  },
-  {
     title: "Settings",
     url: "/settings",
     icon: Settings,
@@ -58,7 +49,19 @@ const items = [
 export function AppSidebar() {
   const { user } = useAuthStore();
   const userName = user ? user.name : "Guest";
-  
+  const menuItems = [...items];
+  if (!user) {
+    menuItems.push({
+      title: "Sign up",
+      url: "/auth/signup",
+      icon: UserRoundPlus,
+    });
+    menuItems.push({
+      title: "Login",
+      url: "/auth/login",
+      icon: Key,
+    });
+  }
   let url = "/users/" + user?.id; 
   if (userName === "Guest"){
     url = "/auth/login"; 

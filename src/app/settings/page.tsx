@@ -119,7 +119,7 @@ export default function SettingsPage() {
 
           <div className="flex justify-end gap-3">
             <Button type="submit" className="flex-1">Update</Button>
-            <Button type="button" onClick={logout} className="flex-1 bg-red-400 hover:bg-red-600 cursor-pointer">Logout</Button>
+            <Button type="button" onClick={() => {logout(); router.push('/'); toast.success('Logged out successfully');}} className="flex-1 bg-red-400 hover:bg-red-600 cursor-pointer">Logout</Button>
             <Button type="button" variant="destructive" onClick={deleteAccount} className="flex-1 hover:bg-gray-200 cursor-pointer">Delete Account</Button>
           </div>
         </form>

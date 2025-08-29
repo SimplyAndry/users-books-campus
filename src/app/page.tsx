@@ -17,6 +17,12 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24 space-y-8 bg-gradient-to-br from-[#FFEFBA] to-[#FFFFFF]">
+      {!user && (
+         <div className="absolute top-4 left-4 flex flex-row gap-4">
+             <a href="/auth/login" className="text-gray-500 hover:underline" >Login</a>
+             <a href="/auth/signup" className="text-gray-500 hover:underline" >Register</a>
+         </div>
+      )}
       <h1 className="flex text-7xl text-stone-950">Welcome!</h1>
       <p className="text-stone-900 text-xl">What do you want to do:</p>
       <div>

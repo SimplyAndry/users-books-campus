@@ -30,7 +30,6 @@ export default function Login() {
 
       if (found) {
         login(found);
-        setLoginMessage(`✅ Benvenuto ${found.name}`);
         router.replace("/"); 
       } else {
         setLoginMessage("❌ Nome o password errati");
