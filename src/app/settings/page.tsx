@@ -112,9 +112,9 @@ export default function SettingsPage() {
           </div>
           <div className="mt-4 p-4 border rounded-md bg-gray-50">
             <h2 className="text-lg font-semibold mb-2">Preview Changes</h2>
-            <p><strong>Name:</strong> {watchedFields.name}</p>
-            <p><strong>Avatar:</strong> {watchedFields.avatar}</p>
-            <p><strong>Birthdate:</strong> {watchedFields.birthdate}</p>
+            <p><strong>Name:</strong><span className="truncate inline-block max-w-[380px] align-bottom">{watchedFields.name}</span></p>
+            <p><strong>Avatar:</strong><span className="truncate inline-block max-w-[480px] align-bottom">{watchedFields.avatar}</span></p>
+            <p><strong>Birthdate:</strong><span className="truncate inline-block max-w-[380px] align-bottom">{watchedFields.birthdate}</span></p>
           </div>
 
           <div className="flex justify-end gap-3">
