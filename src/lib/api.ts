@@ -87,7 +87,7 @@ export const Api = {
     return parseResponse(res)
   },
 
-  updateArticle: async (id: string, article: { title: string }) => {
+  updateArticle: async (id: string, article: { title: string; description: string; picture: string; buyUrl: string }) => {
     const res = await fetch(`${API_BASE_URL}/articles/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
