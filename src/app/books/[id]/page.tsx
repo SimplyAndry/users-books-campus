@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { DeleteButton } from "@/components/deletebutton";
 import { useParams } from "next/navigation";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import EditBook from "./edit-book";
 
 interface BookInfo {
   name: string;
@@ -21,10 +23,10 @@ interface BookInfo {
 export default function BookPage() {
   const params = useParams();
   const id = params?.id;
-
   const [book, setBook] = useState<BookInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (!id) {
@@ -66,6 +68,15 @@ export default function BookPage() {
       <div className="flex-1 relative">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-2xl font-bold mb-4 truncate">{book.name}</h1>
+          
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogContent className="max-w-lg">
+              <DialogHeader>
+                <DialogTitle>Edit Book</DialogTitle>
+              </DialogHeader>
+              <EditBook bookId={id as string} onClose={() => {setOpen(false)}} />
+            </DialogContent>
+          </Dialog>
           <img
             src={book.picture}
             alt={book.name}
@@ -80,7 +91,16 @@ export default function BookPage() {
               <span className="text-xl">Buy</span>
             </Button>
           </Link>
-          {typeof id === 'string' && <DeleteButton id={id} sellerId={book.sellerId} />}
+          {typeof id === 'string' && 
+          <div className="">
+            <p></p>
+            <Button variant="default" onClick={() => setOpen(true)} size="lg" className="w-sm h-12 bg-gray-500">
+              <span className="text-xl">Edit</span>
+            </Button>
+            <DeleteButton id={id} sellerId={book.sellerId} />
+          </div>
+          }
+
         </div>
       </div>
     </main>
